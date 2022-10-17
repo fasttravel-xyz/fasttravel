@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package fasttravel.realtime.core;
+
+import "google/protobuf/timestamp.proto";
+
+message Message {
+    oneof payload {
+        ServerTimeRequest server_time_req = 1;
+        ServerTimeResponse server_time_res = 2;
+    }
+}
+
+message ServerTimeRequest {
+}
+
+message ServerTimeResponse {
+    google.protobuf.Timestamp server_time = 1;
+}

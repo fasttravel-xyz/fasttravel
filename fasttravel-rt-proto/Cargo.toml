@@ -1,0 +1,22 @@
+[package]
+name = "fasttravel_rt_proto"
+version = "0.0.1"
+edition = "2021"
+license = "Apache-2.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+prost = "0.10"
+prost-types = "0.10"
+log = { version = "0.4", optional = true }
+serde = { version = "1.0", features = ["derive"] }
+
+[features]
+default = ["proto_log_def"]
+proto_log_def = ["log/max_level_debug", "log/release_max_level_warn"]
+proto_log_max = ["log/max_level_trace", "log/release_max_level_trace"]
+proto_log_min = ["log/max_level_warn", "log/release_max_level_error"]
+
+[build-dependencies]
+prost-build = "0.11"

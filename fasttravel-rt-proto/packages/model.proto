@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package fasttravel.realtime.model;
+
+message Message {
+    oneof payload {
+        PlaceHolder text_msg = 1;
+    }
+}
+
+message PlaceHolder {
+    string text = 1;
+}

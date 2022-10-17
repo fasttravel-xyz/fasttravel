@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package fasttravel.realtime.connection;
+
+message Message {
+    oneof payload {
+        TicketHandshakeRequest handshake_req = 11;
+        TicketHandshakeResponse handshake_res = 12;
+    }
+}
+
+message TicketHandshakeRequest {
+    string ticket = 1;
+}
+
+message TicketHandshakeResponse {
+    bool success = 1;
+}

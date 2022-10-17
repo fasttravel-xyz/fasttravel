@@ -1,0 +1,64 @@
+[package]
+name = "fasttravel_rt_server"
+version = "0.0.1"
+authors = ["cosmoplankton <cosmoplankton@gmail.com>"]
+edition = "2021"
+publish = false
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+name = "fasttravel_rt_server"
+path = "src/lib.rs"
+
+[[bin]]
+name = "realtime_main_node"
+path = "src/bin/mockers/realtime_main_node.rs"
+# required-features = ["mockers"]
+
+[[bin]]
+name = "realtime_shared_node"
+path = "src/bin/mockers/realtime_shared_node.rs"
+# required-features = ["mockers"]
+
+[[bin]]
+name = "realtime_dedicated_node"
+path = "src/bin/mockers/realtime_dedicated_node.rs"
+# required-features = ["mockers"]
+
+[[bin]]
+name = "mocker_auth"
+path = "src/bin/mockers/auth_provider.rs"
+# required-features = ["mockers"]
+
+[[bin]]
+name = "mocker_session"
+path = "src/bin/mockers/session_lambda.rs"
+# required-features = ["mockers"]
+
+
+[dependencies]
+# internal dependencies
+factor = { git = "https://github.com/fasttravel-xyz/factor", branch = "0.0.1-dev0", features=["ipc-cluster"]}
+fasttravel_rt_proto = { path = "../../fasttravel-rt-proto" }
+fasttravel_rt_services = { path = "../fasttravel_rt_services" }
+
+# external dependencies
+axum = { version = "0.6.0-rc.2", features = ["ws", "headers"] }
+chrono = { version = "0.4" }
+dashmap = { version = "5.3" }
+flume = { version = "0.10" }
+futures = { version = "0.3.21" }
+headers = { version = "0.3" }
+jsonwebtoken = { version = "8.1" }
+once_cell = { version = "1.14" }
+reqwest = { version = "0.11", features = ["json"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = { version = "1.0" }
+tokio = { version = "1.0", features = ["macros", "rt-multi-thread"] }
+tower-http = { version = "0.3.0", features = ["fs", "trace"] }
+tracing = "0.1"
+uuid = { version = "1.1.2", features = ["serde", "v4"]}
+clap = { version = "4.0", features = ["derive"] }
+log = { version = "0.4" }
+

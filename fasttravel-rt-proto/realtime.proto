@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package fasttravel.realtime;
+
+import "packages/connection.proto";
+import "packages/core.proto";
+import "packages/presence.proto";
+import "packages/activity.proto";
+import "packages/model.proto";
+
+
+// This message protocol allows to easily append already encoded fields.
+// This might change after certain benchmark tests are evaluated.
+message RealtimeMessage {
+    message Header {
+        uint32 request_id = 1;
+        uint32 response_id = 2;
+    }
+
+    Header header = 1;
+    oneof body {
+        connection.Message connection_msg = 2;
+        core.Message core_msg = 3;
+        presence.Message presence_msg = 4;
+        activity.Message activity_msg = 5;
+        model.Message model_msg = 6;
+    }
+}

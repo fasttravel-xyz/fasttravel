@@ -1,0 +1,13 @@
+[package]
+name = "fasttravel_rt_services"
+version = "0.0.1"
+authors = ["cosmoplankton <cosmoplankton@gmail.com>"]
+edition = "2021"
+publish = false
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+uuid = { version = "1.1", features = ["serde", "v4"]}
+futures = { version = "0.3" }
+serde = { version = "1.0", features = ["derive"] }

@@ -1,0 +1,44 @@
+[package]
+name = "fasttravel_rt_client_private"
+version = "0.0.1"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+path = "private/src/lib.rs"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+fasttravel_rt_proto = { path = "../fasttravel-rt-proto" }
+wasm-bindgen = "0.2"
+web-sys = { version = "0.3.59", features = [
+    "BinaryType",
+    "WebSocket",
+    "MessageEvent",
+    "ErrorEvent",
+    "Headers",
+    "Request",
+    "RequestInit",
+    "RequestMode",
+    "Response",
+    "Window",] }
+js-sys = "0.3.60"
+log = "0.4.17"
+wasm-bindgen-futures = "0.4.33"
+futures = { version = "0.3.21" }
+serde = { version = "1.0", features = ["derive"] }
+serde-wasm-bindgen = "0.4"
+
+
+[profile.release]
+lto = true
+opt-level = 's'
+panic = "abort"
+
+# REFERENCE: https://doc.rust-lang.org/cargo/reference/profiles.html#dev
+[profile.dev]
+lto = false
+opt-level = 0
+debug = true
+panic = "abort"

@@ -1,0 +1,11 @@
+hard_tabs = false
+use_try_shorthand = true
+tab_spaces = 4
+max_width = 100
+newline_style = "Unix"
+reorder_imports = true
+fn_args_layout = "Compressed"
+edition = "2021"
+
+# nightly channel features
+# wrap_comments = true
